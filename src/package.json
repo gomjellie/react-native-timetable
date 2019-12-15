@@ -1,0 +1,31 @@
+{
+  "name": "react-native-timetable",
+  "version": "1.0.0",
+  "description": "react native timetable",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gomjellie/react-native-timetable.git"
+  },
+  "keywords": [
+    "react-native",
+    "timetable"
+  ],
+  "author": "gomjellie",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gomjellie/react-native-timetable/issues"
+  },
+  "homepage": "https://github.com/gomjellie/react-native-timetable#readme",
+  "dependencies": {
+    "moment": "^2.24.0",
+    "prop-types": "^15.7.2"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  }
+}

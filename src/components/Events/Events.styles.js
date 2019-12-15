@@ -1,9 +1,6 @@
 import { StyleSheet } from 'react-native';
-import { Theme } from 'teaset';
-import MintTheme from '../../../../MintTheme';
-Theme.set(MintTheme);
 
-const GREY_COLOR = Theme.rowSeparatorColor;
+const GREY_COLOR = '#E9EDF0';
 const ROW_HEIGHT = 60;
 export { ROW_HEIGHT };
 export const CONTENT_OFFSET = 0;

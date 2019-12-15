@@ -1,4 +1,5 @@
 import TimeTableView from './components/TimeTable/TimeTableView';
-import { addLocale } from './components/utils';
+import { addLocale, genTimeBlock, filterEvents } from './components/utils';
 
 export { TimeTableView as default, addLocale };
+export { genTimeBlock, filterEvents };
