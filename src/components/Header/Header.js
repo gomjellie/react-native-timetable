@@ -72,7 +72,7 @@ const Title = ({ numberOfDays }) => {
       <Text
         style={[styles.text, { fontSize: getFontSizeHeader(numberOfDays) }]}
       >
-        시간
+
       </Text>
     </View>
   );

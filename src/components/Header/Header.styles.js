@@ -1,7 +1,4 @@
 import { StyleSheet } from 'react-native';
-import { Theme } from 'teaset';
-import MintTheme from '../../../../MintTheme';
-Theme.set(MintTheme);
 
 const styles = StyleSheet.create({
   container: {
@@ -12,7 +9,7 @@ const styles = StyleSheet.create({
   title: {
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor: Theme.defaultColor,
+    borderColor: '#F8F8F8',
     borderTopWidth: 1,
     width: 26,
   },
@@ -24,12 +21,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    borderColor: Theme.defaultColor,
+    borderColor: '#F8F8F8',
     borderTopWidth: 1,
     borderLeftWidth: 1,
   },
   text: {
-    color: Theme.defaultColor,
+    color: '#F8F8F8',
   },
 });
 

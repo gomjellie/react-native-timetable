@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Dimensions, View} from 'react-native';
-import {Toast} from 'teaset';
 import moment from 'moment';
 
 import Event from '../Event/Event';
