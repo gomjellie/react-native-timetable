@@ -55,8 +55,8 @@ Type: array of [event](#event)
 Type: Object
 
  - title: String
- - startTime: Date (make Date using [genTimeBlock](#genTimeBlock) function)
- - endTime: Date
+ - startTime: Date (result of [genTimeBlock](#genTimeBlock))
+ - endTime: Date (result of [genTimeBlock](#genTimeBlock))
  - location: String
  - extra_descriptions: Array Of String
 
