@@ -7,10 +7,6 @@ import {
 import styles from './Event.styles';
 
 const Event = ({ event, onPress, style }) => {
-  /*
-    TODO: <Text> {event.description} </Text>
-    이부분을 description -> professor, title, location 으로 3단 으로 변경
-   */
   event.extra_descriptions = event.extra_descriptions || [];
   return (
     <TouchableOpacity
