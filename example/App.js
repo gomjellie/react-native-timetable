@@ -23,6 +23,10 @@ export default class App extends Component {
     this.pivotDate = genTimeBlock('mon');
   }
 
+  scrollViewRef = (ref) => {
+    this.timetableRef = ref;
+  };
+
   onEventPress = (evt) => {
     Alert.alert("onEventPress", JSON.stringify(evt));
   };
@@ -32,7 +36,7 @@ export default class App extends Component {
       <SafeAreaView style={{flex: 1}}>
         <View style={styles.container}>
           <TimeTableView
-            // scrollViewRef={this.scrollViewRef}
+            scrollViewRef={this.scrollViewRef}
             events={events_data}
             pivotTime={8}
             pivotDate={this.pivotDate}
