@@ -14,16 +14,17 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     fontSize: 13,
   },
-  professor: {
+  description: {
     color: '#777',
     textAlign: 'left',
-    paddingTop: 4.5,
-    fontSize: 10,
+    fontSize: 9,
   },
   location: {
     color: '#777',
     textAlign: 'left',
-    fontSize: 10,
+    paddingTop: 4,
+    paddingBottom: 2,
+    fontSize: 11,
   },
 });
 

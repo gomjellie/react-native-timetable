@@ -11,6 +11,7 @@ const Event = ({ event, onPress, style }) => {
     TODO: <Text> {event.description} </Text>
     이부분을 description -> professor, title, location 으로 3단 으로 변경
    */
+  event.extra_descriptions = event.extra_descriptions || [];
   return (
     <TouchableOpacity
       onPress={() => onPress(event)}
@@ -19,8 +20,10 @@ const Event = ({ event, onPress, style }) => {
       }]}
     >
       <Text style={styles.title}>{event.title}</Text>
-      <Text style={styles.professor}>{event.professor}</Text>
       <Text style={styles.location}>{event.location}</Text>
+      {event.extra_descriptions.map((description, idx) => (
+        <Text key={idx} style={styles.description}>{description}</Text>
+      ))}
     </TouchableOpacity>
   );
 };
@@ -29,7 +32,7 @@ const eventPropTypes = PropTypes.shape({
   color: PropTypes.string,
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
-  professor: PropTypes.string,
+  extra_descriptions: PropTypes.arrayOf(PropTypes.string),
   location: PropTypes.string,
   startTime: PropTypes.instanceOf(Date).isRequired,
   endTime: PropTypes.instanceOf(Date).isRequired,
