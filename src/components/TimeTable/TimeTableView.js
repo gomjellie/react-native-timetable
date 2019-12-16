@@ -6,7 +6,7 @@ import {
   Text,
 } from 'react-native';
 import moment from 'moment';
-import { setLocale } from '../utils';
+import { setLocale, addColor } from '../utils';
 import Events from '../Events/Events';
 import Header from '../Header/Header';
 import styles from './TimeTableView.styles';
@@ -17,7 +17,7 @@ export default class TimeTableView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentMoment: props.selectedDate,
+      currentMoment: props.pivotDate,
     };
     const { startTime } = this.props;
     this.calendar = null;
@@ -49,24 +49,15 @@ export default class TimeTableView extends Component {
     return times;
   };
 
-  prepareDates = (currentMoment, numberOfDays) => {
-    const dates = [];
-    for (let i = 0; i < 1; i += 1) {
-      const date = moment(currentMoment).add(numberOfDays * i, 'd');
-      dates.push(date);
-    }
-    return dates;
-  };
-
   render() {
     const {
       numberOfDays,
       headerStyle,
       formatDateHeader,
       onEventPress,
-      events,
       startTime,
     } = this.props;
+    const events = addColor(this.props.events);
     const { currentMoment } = this.state;
     // const dates = this.prepareDates(currentMoment, numberOfDays);
     const date = moment(currentMoment);
@@ -119,7 +110,7 @@ TimeTableView.propTypes = {
   formatDateHeader: PropTypes.string,
   onEventPress: PropTypes.func,
   headerStyle: PropTypes.object,
-  selectedDate: PropTypes.instanceOf(Date).isRequired,
+  pivotDate: PropTypes.instanceOf(Date).isRequired,
   locale: PropTypes.string,
 };
 
