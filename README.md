@@ -19,7 +19,7 @@ yarn add react-native-timetable
 
 No need to link just install it.
 
-## Props
+## TimeTableView Props
 
  - [scrollViewRef](#scrollViewRef)
  - [events](#events)
@@ -113,3 +113,22 @@ headerStyle: {
 Type: string
 
 TODO: make this works better
+
+## Helper Functions
+
+ - [genTimeBlock](#genTimeBlock)
+ - [addLocale](#addLocale)
+
+### genTimeBlock
+
+Type: Function
+
+#### params
+
+ - dayOfWeek (String, One of "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT")
+ - hours (Number, default 0)
+ - minutes (Number, default 0)
+
+### addLocale
+
+not yet
