@@ -52,6 +52,16 @@ Type: array of [event](#event)
 
 #### event
 
+Type: Object
+
+ - title: String
+ - startTime: Date (make Date using [genTimeBlock](#genTimeBlock) function)
+ - endTime: Date
+ - location: String
+ - extra_descriptions: Array Of String
+
+e.g.)
+
 ```
 {
     title: String,
@@ -80,7 +90,7 @@ if it is 9, it means the view start with 9AM.
 
 Type: Date
 
-I surely recommend to make date with genTimeBlock function
+I surely recommend to make date with [genTimeBlock](#genTimeBlock) function
 
 e.g.)
 
