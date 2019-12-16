@@ -65,8 +65,8 @@ class Events extends Component {
      * TODO: gotta reduce topOffset value in order to pull events upper (it should be go together with left time label)
      * @type {number}
      */
-    const { startTime } = this.props;
-    const startHours = moment(item.startDate).hours() - startTime;
+    const { pivotTime } = this.props;
+    const startHours = moment(item.startDate).hours() - pivotTime;
     const startMinutes = moment(item.startDate).minutes();
     const totalStartMinutes = (startHours * MINUTES_IN_HOUR) + startMinutes;
     const topOffset = (totalStartMinutes * CONTENT_HEIGHT) / MINUTES_IN_DAY;
@@ -170,11 +170,12 @@ Events.propTypes = {
   onEventPress: PropTypes.func,
   selectedDate: PropTypes.instanceOf(Date),
   times: PropTypes.arrayOf(PropTypes.number),
-  startTime: PropTypes.number,
+  pivotTime: PropTypes.number,
 };
 
 Events.defaultProps = {
   events: [],
+  pivotTime: 8,
   selectedDate: new Date(),
 };
 

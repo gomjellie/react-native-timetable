@@ -19,10 +19,10 @@ export default class TimeTableView extends Component {
     this.state = {
       currentMoment: props.pivotDate,
     };
-    const { startTime } = this.props;
+    const { pivotTime } = this.props;
     this.calendar = null;
     setLocale(props.locale);
-    this.times = this.generateTimes(startTime);
+    this.times = this.generateTimes(pivotTime);
   }
 
   componentDidMount() {
@@ -41,9 +41,9 @@ export default class TimeTableView extends Component {
     }
   }
 
-  generateTimes = (startTime) => {
+  generateTimes = (pivotTime) => {
     const times = [];
-    for (let i = startTime; i < TIME_LABELS_COUNT; i += 1) {
+    for (let i = pivotTime; i < TIME_LABELS_COUNT; i += 1) {
       times.push(i);
     }
     return times;
@@ -55,7 +55,7 @@ export default class TimeTableView extends Component {
       headerStyle,
       formatDateHeader,
       onEventPress,
-      startTime,
+      pivotTime,
     } = this.props;
     const events = addColor(this.props.events);
     const { currentMoment } = this.state;
@@ -85,7 +85,7 @@ export default class TimeTableView extends Component {
               style={styles.eventsContainer}
             >
               <Events
-                startTime={startTime}
+                pivotTime={pivotTime}
                 key={date}
                 times={this.times}
                 selectedDate={date.toDate()}
@@ -104,7 +104,7 @@ export default class TimeTableView extends Component {
 TimeTableView.propTypes = {
   events: Events.propTypes.events,
   numberOfDays: PropTypes.oneOf([1, 3, 5, 6]).isRequired,
-  startTime: PropTypes.number,
+  pivotTime: PropTypes.number,
   onSwipeNext: PropTypes.func,
   onSwipePrev: PropTypes.func,
   formatDateHeader: PropTypes.string,
@@ -117,5 +117,5 @@ TimeTableView.propTypes = {
 TimeTableView.defaultProps = {
   events: [],
   locale: 'en',
-  startTime: 8,
+  pivotTime: 8,
 };
