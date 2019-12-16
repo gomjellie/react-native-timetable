@@ -31,8 +31,8 @@ const eventPropTypes = PropTypes.shape({
   title: PropTypes.string,
   professor: PropTypes.string,
   location: PropTypes.string,
-  startDate: PropTypes.instanceOf(Date).isRequired,
-  endDate: PropTypes.instanceOf(Date).isRequired,
+  startTime: PropTypes.instanceOf(Date).isRequired,
+  endTime: PropTypes.instanceOf(Date).isRequired,
 });
 
 Event.propTypes = {

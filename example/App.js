@@ -34,7 +34,7 @@ export default class App extends Component {
           <TimeTableView
             // scrollViewRef={this.scrollViewRef}
             events={events_data}
-            pivotTime={7}
+            pivotTime={8}
             pivotDate={this.pivotDate}
             numberOfDays={this.numOfDays}
             onEventPress={this.onEventPress}

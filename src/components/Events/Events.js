@@ -39,20 +39,20 @@ class Events extends Component {
       // current date in numberOfDays, calculated from selected date
       const currenDate = moment(selectedDate).add(i, 'd');
 
-      // filter events that have startDate/endDate in current date
+      // filter events that have startTime/endTime in current date
       let filteredEvents = events.filter((item) => {
-        return currenDate.isSame(item.startDate, 'day') || currenDate.isSame(item.endDate, 'day');
+        return currenDate.isSame(item.startTime, 'day') || currenDate.isSame(item.endTime, 'day');
       });
 
       filteredEvents = filteredEvents.map((item) => {
-        let { startDate } = item;
-        // if endDate is in next day, set starDate to begin time of current date (00:00)
-        if (!currenDate.isSame(startDate, 'day')) {
-          startDate = currenDate.startOf('day').toDate();
+        let { startTime } = item;
+        // if endTime is in next day, set starDate to begin time of current date (00:00)
+        if (!currenDate.isSame(startTime, 'day')) {
+          startTime = currenDate.startOf('day').toDate();
         }
         return {
           ...item,
-          startDate,
+          startTime,
         };
       });
       total.push(filteredEvents);
@@ -66,11 +66,11 @@ class Events extends Component {
      * @type {number}
      */
     const { pivotTime } = this.props;
-    const startHours = moment(item.startDate).hours() - pivotTime;
-    const startMinutes = moment(item.startDate).minutes();
+    const startHours = moment(item.startTime).hours() - pivotTime;
+    const startMinutes = moment(item.startTime).minutes();
     const totalStartMinutes = (startHours * MINUTES_IN_HOUR) + startMinutes;
     const topOffset = (totalStartMinutes * CONTENT_HEIGHT) / MINUTES_IN_DAY;
-    const height = (moment(item.endDate).diff(item.startDate, 'minutes') * CONTENT_HEIGHT) / MINUTES_IN_DAY;
+    const height = (moment(item.endTime).diff(item.startTime, 'minutes') * CONTENT_HEIGHT) / MINUTES_IN_DAY;
     const width = this.getEventItemWidth();
 
     return {
@@ -120,8 +120,8 @@ class Events extends Component {
   sortEventByDates = (events) => {
     return events.slice(0)
       .sort((a, b) => {
-        return moment(a.startDate)
-          .diff(b.startDate, 'minutes');
+        return moment(a.startTime)
+          .diff(b.startTime, 'minutes');
       });
   };
 
