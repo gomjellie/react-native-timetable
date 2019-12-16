@@ -52,21 +52,8 @@ const genTimeBlock = (dayOfWeek, hours = 0, minutes = 0) => {
   return date;
 };
 
-const filterCart = (items) => {
-  return items.reduce((acc, item) => {
-    acc.push({
-      ...item,
-      color: 'rgba(62, 52, 0, 0.1)',
-      title: '',
-      professor: '',
-      location: '',
-    });
-    return acc;
-  }, []);
-};
-
-
-const filterEvents = (events) => {
+const addColor = (events) => {
+  // add color to item
   return events.reduce((acc, item, idx) => {
     const sameOne = acc.find((elem) => {
       return elem.code === item.code;
@@ -141,5 +128,5 @@ const colorGenerator = (num) => {
   return color_list[num % color_list.length];
 };
 
-export {genDayOfWeek, genTimeBlock, filterCart, colorGenerator, filterEvents};
+export {genDayOfWeek, genTimeBlock, colorGenerator, addColor};
 
