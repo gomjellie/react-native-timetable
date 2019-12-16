@@ -2,7 +2,6 @@ import { genTimeBlock } from 'react-native-timetable';
 
 export default [
   {
-    code: 1,
     title: "Math",
     startDate: genTimeBlock("MON", 9),
     endDate: genTimeBlock("MON", 10, 50),
@@ -10,7 +9,6 @@ export default [
     professor: "Kim",
   },
   {
-    code: 1,
     title: "Math",
     startDate: genTimeBlock("WED", 9),
     endDate: genTimeBlock("WED", 10, 50),
@@ -18,7 +16,6 @@ export default [
     professor: "Kim",
   },
   {
-    code: 2,
     title: "Physics",
     startDate: genTimeBlock("MON", 11),
     endDate: genTimeBlock("MON", 11, 50),
@@ -26,7 +23,6 @@ export default [
     professor: "Einstein",
   },
   {
-    code: 2,
     title: "Physics",
     startDate: genTimeBlock("WED", 11),
     endDate: genTimeBlock("WED", 11, 50),
@@ -34,7 +30,6 @@ export default [
     professor: "Einstein",
   },
   {
-    code: 3,
     title: "Lunch",
     startDate: genTimeBlock("MON", 12),
     endDate: genTimeBlock("MON", 13),
@@ -42,7 +37,6 @@ export default [
     professor: "",
   },
   {
-    code: 3,
     title: "Lunch",
     startDate: genTimeBlock("TUE", 12),
     endDate: genTimeBlock("TUE", 13),
@@ -50,7 +44,6 @@ export default [
     professor: "",
   },
   {
-    code: 3,
     title: "Lunch",
     startDate: genTimeBlock("WED", 12),
     endDate: genTimeBlock("WED", 13),
@@ -58,7 +51,6 @@ export default [
     professor: "",
   },
   {
-    code: 3,
     title: "Lunch",
     startDate: genTimeBlock("THU", 12),
     endDate: genTimeBlock("THU", 13),
@@ -66,7 +58,6 @@ export default [
     professor: "",
   },
   {
-    code: 3,
     title: "Lunch",
     startDate: genTimeBlock("FRI", 12),
     endDate: genTimeBlock("FRI", 13),
@@ -74,7 +65,6 @@ export default [
     professor: "",
   },
   {
-    code: 4,
     title: "Mandarin",
     startDate: genTimeBlock("TUE", 9),
     endDate: genTimeBlock("TUE", 10, 50),
@@ -82,7 +72,6 @@ export default [
     professor: "Chen",
   },
   {
-    code: 5,
     title: "Japanese",
     startDate: genTimeBlock("FRI", 9),
     endDate: genTimeBlock("FRI", 10, 50),
@@ -90,7 +79,6 @@ export default [
     professor: "Nakamura",
   },
   {
-    code: 6,
     title: "Club Activity",
     startDate: genTimeBlock("THU", 9),
     endDate: genTimeBlock("THU", 10, 50),
@@ -98,7 +86,6 @@ export default [
     professor: "",
   },
   {
-    code: 6,
     title: "Club Activity",
     startDate: genTimeBlock("FRI", 13, 30),
     endDate: genTimeBlock("FRI", 14, 50),
@@ -106,7 +93,6 @@ export default [
     professor: "",
   },
   {
-    code: 7,
     title: "Volunteer",
     startDate: genTimeBlock("MON", 13, 30),
     endDate: genTimeBlock("MON", 14, 50),
@@ -114,7 +100,6 @@ export default [
     professor: "",
   },
   {
-    code: 7,
     title: "Volunteer",
     startDate: genTimeBlock("MON", 16),
     endDate: genTimeBlock("MON", 16, 50),

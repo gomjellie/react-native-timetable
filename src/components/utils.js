@@ -56,11 +56,11 @@ const addColor = (events) => {
   // add color to item
   return events.reduce((acc, item, idx) => {
     const sameOne = acc.find((elem) => {
-      return elem.code === item.code;
+      return elem.title === item.title;
     });
     const count = acc.reduce((acc, item) => {
-      if (acc[acc.length - 1] !== item.code) {
-        acc.push(item.code);
+      if (acc[acc.length - 1] !== item.title) {
+        acc.push(item.title);
       }
       return acc;
     }, []).length;
