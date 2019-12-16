@@ -27,7 +27,7 @@ const Event = ({ event, onPress, style }) => {
 
 const eventPropTypes = PropTypes.shape({
   color: PropTypes.string,
-  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
   professor: PropTypes.string,
   location: PropTypes.string,

@@ -67,6 +67,7 @@ const addColor = (events) => {
     acc.push({
       ...item,
       color: sameOne === undefined ? colorGenerator(count) : sameOne.color,
+      id: idx,
     });
     return acc;
   }, []);
