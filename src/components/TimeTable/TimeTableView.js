@@ -106,12 +106,10 @@ TimeTableView.propTypes = {
   events: Events.propTypes.events,
   numberOfDays: PropTypes.oneOf([1, 3, 5, 6]).isRequired,
   pivotTime: PropTypes.number,
-  onSwipeNext: PropTypes.func,
-  onSwipePrev: PropTypes.func,
+  pivotDate: PropTypes.instanceOf(Date).isRequired,
   formatDateHeader: PropTypes.string,
   onEventPress: PropTypes.func,
   headerStyle: PropTypes.object,
-  pivotDate: PropTypes.instanceOf(Date).isRequired,
   locale: PropTypes.string,
 };
 
