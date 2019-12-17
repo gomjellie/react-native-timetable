@@ -1,6 +1,6 @@
 {
   "name": "react-native-timetable",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "react native timetable",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,11 @@
     "react-native",
     "timetable"
   ],
-  "author": "gomjellie",
+  "author": {
+    "name": "gomjellie",
+    "email": "gomjellie@gmail.com",
+    "url": "https://gomjellie.me"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/gomjellie/react-native-timetable/issues"
