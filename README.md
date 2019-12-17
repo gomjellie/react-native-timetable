@@ -92,8 +92,8 @@ TODO: make this works better
 
 # Helper Functions
 
- - [genTimeBlock](#genTimeBlock)
- - [addLocale](#addLocale)
+ - [`genTimeBlock`](#genTimeBlock) (function(`String`, `Number`, `Number`)) returns Date
+ - [`addLocale`](#addLocale) (function())
 
 ## genTimeBlock
 
