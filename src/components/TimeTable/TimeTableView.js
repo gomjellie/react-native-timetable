@@ -104,7 +104,7 @@ export default class TimeTableView extends Component {
 TimeTableView.propTypes = {
   scrollViewRef: PropTypes.func,
   events: Events.propTypes.events,
-  numberOfDays: PropTypes.oneOf([1, 3, 5, 6]).isRequired,
+  numberOfDays: PropTypes.oneOf([1, 3, 5, 6, 7]).isRequired,
   pivotTime: PropTypes.number,
   pivotDate: PropTypes.instanceOf(Date).isRequired,
   formatDateHeader: PropTypes.string,
