@@ -4,14 +4,14 @@ timetable library for React Native
 
 ![demo-3](./.github/iOS_screen_shot.png)
 
-##  HOW TO INSTALL
+#  HOW TO INSTALL
 
-### Using npm
+## Using npm
 
 ```sh
 npm install react-native-timetable
 ```
-### Using yarn
+## Using yarn
 
 ```sh
 yarn add react-native-timetable
@@ -19,7 +19,7 @@ yarn add react-native-timetable
 
 No need to link just install it.
 
-## TimeTableView Props
+# TimeTableView Props
 
  - [`scrollViewRef`](#scrollViewRef) (Function(`ref`)) function that takes timetableView's ref as parameter
  - [`events`](#events) (array of [event](#event))
@@ -30,7 +30,7 @@ No need to link just install it.
  - [`headerStyle`](#headerStyle) (object) style for header
  - [`locale`](#locale) (string) 
 
-### scrollViewRef
+## scrollViewRef
 
 Type: Function
 
@@ -46,11 +46,11 @@ Usage:
 />
 ```
 
-### events
+## events
 
 Type: array of [event](#event)
 
-#### event
+### event
 
 Type: Object
 
@@ -72,7 +72,7 @@ e.g.)
 }
 ```
 
-### headerStyle
+## headerStyle
 
 Type: object
 
@@ -84,27 +84,27 @@ headerStyle: {
 }
 ```
 
-### locale
+## locale
 
 Type: string
 
 TODO: make this works better
 
-## Helper Functions
+# Helper Functions
 
  - [genTimeBlock](#genTimeBlock)
  - [addLocale](#addLocale)
 
-### genTimeBlock
+## genTimeBlock
 
 Type: Function
 
-#### params
+### params
 
  - dayOfWeek (String, One of "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT")
  - hours (Number, default 0)
  - minutes (Number, default 0)
 
-### addLocale
+## addLocale
 
 not yet
