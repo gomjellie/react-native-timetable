@@ -117,4 +117,5 @@ TimeTableView.defaultProps = {
   events: [],
   locale: 'en',
   pivotTime: 8,
+  formatDateHeader: "dddd",
 };
