@@ -106,3 +106,5 @@ dist
 # IDE stuff
 .idea/
 
+# macOS
+.DS_Store
