@@ -6,6 +6,7 @@ import {
   Alert,
 } from 'react-native';
 import TimeTableView, { genTimeBlock } from 'react-native-timetable';
+
 import events_data from "./events_data";
 
 export default class App extends Component {
