@@ -10,10 +10,6 @@ import styles from './Header.styles';
 const getColumns = (numberOfDays, selectedDate) => {
   const columns = [];
   let initial = 0;
-  if (numberOfDays === 7) {
-    initial = 1;
-    initial -= moment().isoWeekday();
-  }
   for (let i = initial; i < (numberOfDays + initial); i += 1) {
     let date = moment(selectedDate);
     date = date.add(i, 'd');
@@ -91,7 +87,7 @@ const WeekViewHeader = ({
 };
 
 WeekViewHeader.propTypes = {
-  numberOfDays: PropTypes.oneOf([1, 3, 5, 6]).isRequired,
+  numberOfDays: PropTypes.oneOf([1, 3, 5, 6, 7]).isRequired,
   selectedDate: PropTypes.instanceOf(Date).isRequired,
   formatDate: PropTypes.string,
   style: PropTypes.object,

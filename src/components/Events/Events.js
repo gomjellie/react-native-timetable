@@ -31,10 +31,6 @@ class Events extends Component {
     // is events for specific day in range
     const total = [];
     let initial = 0;
-    if (numberOfDays === 7) {
-      initial = 1;
-      initial -= moment().isoWeekday();
-    }
     for (let i = initial; i < (numberOfDays + initial); i += 1) {
       // current date in numberOfDays, calculated from selected date
       const currenDate = moment(selectedDate).add(i, 'd');
@@ -165,7 +161,7 @@ class Events extends Component {
 }
 
 Events.propTypes = {
-  numberOfDays: PropTypes.oneOf([1, 3, 5, 6]).isRequired,
+  numberOfDays: PropTypes.oneOf([1, 3, 5, 6, 7]).isRequired,
   events: PropTypes.arrayOf(Event.propTypes.event),
   onEventPress: PropTypes.func,
   selectedDate: PropTypes.instanceOf(Date),

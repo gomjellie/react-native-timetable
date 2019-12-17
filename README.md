@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
 
  - [`scrollViewRef`](#scrollViewRef) (Function(`ref`)) function that takes timetableView's ref as parameter
  - [`events`](#events) (array of [`event`](#event))
- - `numberOfDays` (Number) it must be one of `3`, `5`, `6`
+ - `numberOfDays` (Number) it must be one of `3`, `5`, `6`, `7`
  - `pivotTime` (Number `default: 8`) it tells what time to start timetable view
  - `pivotDate` (Date, return value of [`genTimeBlock`](#genTimeBlock))
  - `onEventPress` (function([`event`](#event)) callBackFunction that triggered when event is pressed
