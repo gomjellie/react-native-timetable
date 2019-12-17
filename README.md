@@ -21,14 +21,14 @@ No need to link just install it.
 
 ## TimeTableView Props
 
- - [scrollViewRef](#scrollViewRef)
- - [events](#events)
- - [numberOfDays](#numberOfDays)
- - [pivotTime](#pivotTime)
- - [pivotDate](#pivotDate)
- - [onEventPress](#onEventPress)
- - [headerStyle](#headerStyle)
- - [locale](#locale)
+ - [scrollViewRef](#scrollViewRef) (Function(`ref`)) function that takes timetableView's ref as parameter
+ - [events](#events) (array of [event](#event))
+ - numberOfDays (Number) it must be one of 3, 5, 6
+ - pivotTime (Number `default: 8`) it tells what time to start timetable view
+ - pivotDate (Date, return value of [genTimeBlock](#genTimeBlock))
+ - onEventPress (function([`event`](#event)) callBackFunction that triggered when event is pressed
+ - [headerStyle](#headerStyle) (object) style for header
+ - [locale](#locale) (string) 
 
 ### scrollViewRef
 
@@ -71,40 +71,6 @@ e.g.)
     extra_descriptions: Array Of String,
 }
 ```
-
-### numberOfDays
-
-Type: Number
-
-it must be one of 3, 5, 6
-
-### pivotTime
-
-Type: Number(default: 8)
-
-it tells what time to start timetable view
-
-if it is 9, it means the view start with 9AM.
-
-### pivotDate
-
-Type: Date
-
-I surely recommend to make date with [genTimeBlock](#genTimeBlock) function
-
-e.g.)
-
-```js
-const pivotTime = genTimeBlock("MON");
-```
-
-### onEventPress
-
-Type: Function
-
-callBackFunction that triggered when event is pressed
-
-It takes [event](#event) as parameter.
 
 ### headerStyle
 
