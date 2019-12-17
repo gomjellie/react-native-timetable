@@ -185,7 +185,7 @@ const styles = StyleSheet.create({
  - `pivotDate` (Date, return value of [`genTimeBlock`](#genTimeBlock))
  - `onEventPress` (function([`event`](#event)) callBackFunction that triggered when event is pressed
  - [`headerStyle`](#headerStyle) (object) style for header
- - [`formatDateHeader`] (string default `"dddd"`) dddd -> Monday, ddd -> Mon [checkout more details](https://momentjscom.readthedocs.io/en/latest/moment/04-displaying/01-format/)
+ - `formatDateHeader` (string default `"dddd"`) dddd -> Monday, ddd -> Mon [checkout more details](https://momentjscom.readthedocs.io/en/latest/moment/04-displaying/01-format/)
  - [`locale`](#locale) (string) 
 
 ## scrollViewRef
