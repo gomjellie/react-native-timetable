@@ -4,7 +4,13 @@ timetable library for React Native
 
 ![demo-3](./.github/iOS_screen_shot.png)
 
+# Real world example
+
 ![real-world-example](./.github/timetabler.gif)
+
+[App Store](https://apps.apple.com/kr/app/%EC%9C%A0%EC%83%81%EB%AC%B4/id1476194177)
+
+[Play Store](https://play.google.com/store/apps/details?id=com.usaintmu)
 
 #  INSTALLATION
 
