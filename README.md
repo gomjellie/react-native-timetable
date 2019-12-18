@@ -4,17 +4,12 @@ timetable library for React Native
 
 ![demo-3](./.github/iOS_screen_shot.png)
 
-#  HOW TO INSTALL
+![real-world-example](./.github/timetabler.gif)
 
-## Using npm
+#  INSTALLATION
 
 ```sh
 npm install react-native-timetable
-```
-## Using yarn
-
-```sh
-yarn add react-native-timetable
 ```
 
 No need to link just install it.
@@ -60,36 +55,6 @@ const events_data = [
     extra_descriptions: ["Einstein"],
   },
   {
-    title: "Lunch",
-    startTime: genTimeBlock("MON", 12),
-    endTime: genTimeBlock("MON", 13),
-    location: "Student Restaurant",
-  },
-  {
-    title: "Lunch",
-    startTime: genTimeBlock("TUE", 12),
-    endTime: genTimeBlock("TUE", 13),
-    location: "Student Cafeteria",
-  },
-  {
-    title: "Lunch",
-    startTime: genTimeBlock("WED", 12),
-    endTime: genTimeBlock("WED", 13),
-    location: "Student Cafeteria",
-  },
-  {
-    title: "Lunch",
-    startTime: genTimeBlock("THU", 12),
-    endTime: genTimeBlock("THU", 13),
-    location: "Student Cafeteria",
-  },
-  {
-    title: "Lunch",
-    startTime: genTimeBlock("FRI", 12),
-    endTime: genTimeBlock("FRI", 13),
-    location: "Student Restaurant",
-  },
-  {
     title: "Mandarin",
     startTime: genTimeBlock("TUE", 9),
     endTime: genTimeBlock("TUE", 10, 50),
@@ -114,18 +79,6 @@ const events_data = [
     startTime: genTimeBlock("FRI", 13, 30),
     endTime: genTimeBlock("FRI", 14, 50),
     location: "Activity Center",
-  },
-  {
-    title: "Volunteer",
-    startTime: genTimeBlock("MON", 13, 30),
-    endTime: genTimeBlock("MON", 14, 50),
-    location: "Community Hospital",
-  },
-  {
-    title: "Volunteer",
-    startTime: genTimeBlock("MON", 16),
-    endTime: genTimeBlock("MON", 16, 50),
-    location: "Community Hospital",
   },
 ];
 
@@ -382,3 +335,8 @@ Type: Function
  - dayOfWeek (String, One of `"SUN"`, `"MON"`, `"TUE"`, `"WED"`, `"THU"`, `"FRI"`, `"SAT"`)
  - hours (Number, default `0`)
  - minutes (Number, default `0`)
+
+# Inspirations
+
+https://github.com/hoangnm/react-native-week-view
+
