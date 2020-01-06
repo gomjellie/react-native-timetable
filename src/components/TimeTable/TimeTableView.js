@@ -11,15 +11,13 @@ import Events from '../Events/Events';
 import Header from '../Header/Header';
 import styles from './TimeTableView.styles';
 
-export const TIME_LABELS_COUNT = 22;
-
 export default class TimeTableView extends Component {
   constructor(props) {
     super(props);
     this.state = {
       currentMoment: props.pivotDate,
     };
-    const { pivotTime } = this.props;
+    const { pivotTime,endPivotTime } = this.props;
     this.calendar = null;
     setLocale(props.locale);
     this.times = this.generateTimes(pivotTime);
@@ -43,7 +41,7 @@ export default class TimeTableView extends Component {
 
   generateTimes = (pivotTime) => {
     const times = [];
-    for (let i = pivotTime; i < TIME_LABELS_COUNT; i += 1) {
+    for (let i = pivotTime; i < endPivotTime; i += 1) {
       times.push(i);
     }
     return times;
@@ -117,5 +115,6 @@ TimeTableView.defaultProps = {
   events: [],
   locale: 'en',
   pivotTime: 8,
+  endPivotTime:22
   formatDateHeader: "dddd",
 };
