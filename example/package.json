@@ -12,7 +12,7 @@
   "dependencies": {
     "react": "16.9.0",
     "react-native": "0.61.5",
-    "react-native-timetable": "^1.0.1"
+    "react-native-timetable": "../src"
   },
   "devDependencies": {
     "@babel/core": "^7.7.5",

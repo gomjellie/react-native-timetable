@@ -6,7 +6,7 @@ import {
   Text,
 } from 'react-native';
 import moment from 'moment';
-import { setLocale, addColor } from '../utils';
+import { setLocale, addColor, genTimeBlock } from '../utils';
 import Events from '../Events/Events';
 import Header from '../Header/Header';
 import styles from './TimeTableView.styles';
@@ -17,10 +17,10 @@ export default class TimeTableView extends Component {
     this.state = {
       currentMoment: props.pivotDate,
     };
-    const { pivotTime,endPivotTime } = this.props;
+    const { pivotTime, pivotEndTime } = this.props;
     this.calendar = null;
     setLocale(props.locale);
-    this.times = this.generateTimes(pivotTime);
+    this.times = this.generateTimes(pivotTime, pivotEndTime);
   }
 
   componentDidMount() {
@@ -39,7 +39,7 @@ export default class TimeTableView extends Component {
     }
   }
 
-  generateTimes = (pivotTime) => {
+  generateTimes = (pivotTime, endPivotTime) => {
     const times = [];
     for (let i = pivotTime; i < endPivotTime; i += 1) {
       times.push(i);
@@ -104,6 +104,7 @@ TimeTableView.propTypes = {
   events: Events.propTypes.events,
   numberOfDays: PropTypes.oneOf([1, 3, 5, 6, 7]).isRequired,
   pivotTime: PropTypes.number,
+  pivotEndTime: PropTypes.number,
   pivotDate: PropTypes.instanceOf(Date).isRequired,
   formatDateHeader: PropTypes.string,
   onEventPress: PropTypes.func,
@@ -115,6 +116,7 @@ TimeTableView.defaultProps = {
   events: [],
   locale: 'en',
   pivotTime: 8,
-  endPivotTime:22
+  pivotEndTime: 22,
+  pivotDate: genTimeBlock('mon'),
   formatDateHeader: "dddd",
 };
