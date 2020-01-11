@@ -109,6 +109,7 @@ export default class App extends Component {
             scrollViewRef={this.scrollViewRef}
             events={events_data}
             pivotTime={9}
+            pivotTime={20}
             pivotDate={this.pivotDate}
             numberOfDays={this.numOfDays}
             onEventPress={this.onEventPress}
@@ -139,7 +140,8 @@ const styles = StyleSheet.create({
  - [`events`](#events) (array of [`event`](#event))
  - `numberOfDays` (Number) it must be one of `3`, `5`, `6`, `7`
  - `pivotTime` (Number `default: 8`) it tells what time to start timetable view
- - `pivotDate` (Date, return value of [`genTimeBlock`](#genTimeBlock))
+ - `pivotEndTime` (Number `default: 22`) it tells what time to end timetable view
+ - `pivotDate` (Date, `default monday`, return value of [`genTimeBlock`](#genTimeBlock))
  - `onEventPress` (function([`event`](#event)) callBackFunction that triggered when event is pressed
  - [`headerStyle`](#headerStyle) (object) style for header
  - `formatDateHeader` (string default `"dddd"`) dddd -> Monday, ddd -> Mon [checkout more details](https://momentjscom.readthedocs.io/en/latest/moment/04-displaying/01-format/)
