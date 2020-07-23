@@ -109,7 +109,7 @@ export default class App extends Component {
             scrollViewRef={this.scrollViewRef}
             events={events_data}
             pivotTime={9}
-            pivotTime={20}
+            pivotEndTime={20}
             pivotDate={this.pivotDate}
             numberOfDays={this.numOfDays}
             onEventPress={this.onEventPress}
