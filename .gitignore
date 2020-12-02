@@ -108,3 +108,9 @@ dist
 
 # macOS
 .DS_Store
+
+# default react testing apps
+my-react-app/
+
+# tsc results
+lib/

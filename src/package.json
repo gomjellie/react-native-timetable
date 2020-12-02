@@ -2,9 +2,15 @@
   "name": "react-native-timetable",
   "version": "1.0.4",
   "description": "react native timetable",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": ["lib/"],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "format": "prettier --write \"components/**/*.ts\" \"components/**/*.tsx\"",
+    "lint": "tslint -p tsconfig.json",
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "prepare": "yarn run format && yarn run lint && yarn run test"
   },
   "repository": {
     "type": "git",
@@ -25,11 +31,18 @@
   },
   "homepage": "https://github.com/gomjellie/react-native-timetable#readme",
   "dependencies": {
-    "moment": "^2.24.0",
-    "prop-types": "^15.7.2"
+    "moment": "^2.24.0"
   },
   "peerDependencies": {
     "react": "*",
     "react-native": "*"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.0",
+    "@types/react-native": "^0.63.37",
+    "prettier": "^2.2.1",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^4.1.2"
   }
 }

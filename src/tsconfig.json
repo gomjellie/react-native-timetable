@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "CommonJS",
+    "outDir": "./lib",
+    "jsx": "react",
+    /* react-native FormData type issue */
+    "lib": ["ES2017"],
+    "esModuleInterop": true,
+    "declaration": true
+  },
+  "include": ["index.ts", "components/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
+}

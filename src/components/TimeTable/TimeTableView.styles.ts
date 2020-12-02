@@ -1,10 +1,9 @@
-import {Dimensions, StyleSheet} from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 
-import { ROW_HEIGHT } from '../Events/Events.styles';
 import HeaderStyle from '../Header/Header.styles';
+import { EVENTS_ROW_HEIGHT as ROW_HEIGHT } from '../constant';
 
-const { width: SCREEN_WIDTH } = Dimensions.get('window');
-
+const SCREEN_WIDTH = Dimensions.get('window').width;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -30,7 +29,8 @@ const styles = StyleSheet.create({
     width: HeaderStyle.title.width,
   },
   eventsContainer: {
-    flex: 1, width: SCREEN_WIDTH - HeaderStyle.title.width,
+    flex: 1,
+    width: SCREEN_WIDTH - HeaderStyle.title.width,
   },
 });
 

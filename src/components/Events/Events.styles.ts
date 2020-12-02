@@ -1,9 +1,9 @@
 import { StyleSheet } from 'react-native';
-
-const GREY_COLOR = '#E9EDF0';
-const ROW_HEIGHT = 60;
-export { ROW_HEIGHT };
-export const CONTENT_OFFSET = 0;
+import {
+  EVENTS_CONTENT_OFFSET as CONTENT_OFFSET,
+  EVENTS_GREY_HEX as GREY_HEX,
+  EVENTS_ROW_HEIGHT as ROW_HEIGHT,
+} from '../constant';
 
 const styles = StyleSheet.create({
   container: {
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   },
   timeLabelLine: {
     height: 1,
-    backgroundColor: GREY_COLOR,
+    backgroundColor: GREY_HEX,
     position: 'absolute',
     right: 0,
     left: 0,
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   event: {
     flex: 1,
     overflow: 'hidden',
-    borderColor: GREY_COLOR,
+    borderColor: GREY_HEX,
     borderLeftWidth: 1,
   },
   events: {
