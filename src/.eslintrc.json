@@ -1,0 +1,23 @@
+{
+    "extends": [
+        "plugin:react/recommended",
+        "airbnb"
+    ],
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 6,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "import/no-unresolved": [
+            "error",
+            {"ignore": ["^react$", "^react-native$"]}
+        ]
+    }
+}
