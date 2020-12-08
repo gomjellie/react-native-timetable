@@ -14,6 +14,9 @@
         "ecmaVersion": 6,
         "sourceType": "module"
     },
+    "ignorePatterns": [
+        "node_modules/"
+    ],
     "plugins": [
         "react"
     ],

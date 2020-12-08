@@ -4,7 +4,7 @@
   "description": "react native timetable",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint . --ext .js --ignore-pattern node_modules/",
+    "lint": "eslint . --ext .js",
     "test": "jest"
   },
   "repository": {
