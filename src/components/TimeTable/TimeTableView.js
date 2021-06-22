@@ -6,7 +6,7 @@ import {
   Text,
 } from 'react-native';
 import moment from 'moment';
-import { setLocale, addColor, genTimeBlock } from '../utils';
+import { setLocale, assignColor, genTimeBlock } from '../utils';
 import Events from '../Events/Events';
 import Header from '../Header/Header';
 import styles from './TimeTableView.styles';
@@ -55,7 +55,7 @@ export default class TimeTableView extends Component {
       onEventPress,
       pivotTime,
     } = this.props;
-    const events = addColor(this.props.events);
+    const events = assignColor(this.props.events);
     const { currentMoment } = this.state;
     // const dates = this.prepareDates(currentMoment, numberOfDays);
     const date = moment(currentMoment);
