@@ -25,7 +25,7 @@ class Events extends Component {
     }
   };
 
-  getEventsBynDays = (nDays, events, selectedDate) => {
+  catEventsByDays = (nDays, events, selectedDate) => {
     // total stores events in each day of nDays
     // example: [[event1, event2], [event3, event4], [event5]], each child array
     // is events for specific day in range
@@ -56,7 +56,7 @@ class Events extends Component {
     return total;
   };
 
-  getStyleForEvent = (item) => {
+  calcEventStyle = (item) => {
     /**
      * TODO: gotta reduce topOffset value in order to pull events upper (it should be go together with left time label)
      * @type {number}
@@ -77,13 +77,13 @@ class Events extends Component {
     };
   };
 
-  getEventsWithPosition = (totalEvents) => {
+  adjustEventStyle = (totalEvents) => {
     const itemWidth = this.getEventItemWidth();
     return totalEvents.map((events) => {
       // get position and width for each event
       return events.reduce((eventsAcc, event, i) => {
         let numberOfDuplicate = 1;
-        const style = this.getStyleForEvent(event);
+        const style = this.calcEventStyle(event);
         // check if previous events have the same position or not,
         // start from 0 to current index of event item
         for (let j = 0; j < i; j += 1) {
@@ -113,7 +113,7 @@ class Events extends Component {
     return EVENTS_CONTAINER_WIDTH / nDays;
   };
 
-  sortEventByDates = (events) => {
+  sortEventsByDate = (events) => {
     return events.slice(0)
       .sort((a, b) => {
         return moment(a.startTime)
@@ -128,9 +128,9 @@ class Events extends Component {
       selectedDate,
       times,
     } = this.props;
-    const sortedEvents = this.sortEventByDates(events);
-    let totalEvents = this.getEventsByNumberOfDays(nDays, sortedEvents, selectedDate);
-    totalEvents = this.getEventsWithPosition(totalEvents);
+    const sortedEvents = this.sortEventsByDate(events);
+    let totalEvents = this.catEventsByDays(nDays, sortedEvents, selectedDate);
+    totalEvents = this.adjustEventStyle(totalEvents);
     return (
       <View style={styles.container}>
         {times.map(time => (
