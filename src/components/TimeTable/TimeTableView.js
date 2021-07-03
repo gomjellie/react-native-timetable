@@ -23,13 +23,6 @@ export default class TimeTableView extends Component {
     this.times = this.genTimes(pivotTime, pivotEndTime);
   }
 
-  componentDidMount() {
-    // this.calendar.scrollTo({ y: (300), x: 0, animated: true });
-    // requestAnimationFrame(() => {
-    //   this.calendar.scrollTo({ y: (SCREEN_HEIGHT - 300), x: 0, animated: false });
-    // });
-  }
-
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.selectedDate) {
       this.setState({ currentDate: nextProps.selectedDate });

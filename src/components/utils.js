@@ -8,17 +8,13 @@ export const setLocale = (locale) => {
   moment.locale(locale);
 };
 
-//this function should be removed
-// export const getCurrentMonth = (date) => {
-//   return moment(date).format('MMMM Y');
-// };
-
+/**
+ * @param {String} dayOW
+ * @example genDateBlock("mon")
+ * @returns {Date}
+ */
 const genDateBlock = (dayOW) => {
-  /*
-    DayOfWeekString : SUN, MON, TUE, WED, THU, FRI, SAT
-      type : string
-   */
-  if (typeof DayOfWeekString !== 'string') {
+  if (typeof dayOW !== 'string') {
     throw new Error(`genDateBlock got parameter type: ${typeof dayOW}, but string expected`);
   }
 
@@ -38,7 +34,7 @@ const genDateBlock = (dayOW) => {
     '토': '06',
   };
 
-  return new Date(`2019-07-${dayOWMap[DayOfWeekString.toLowerCase()]}T00:00:00`);
+  return new Date(`2019-07-${dayOWMap[dayOW.toLowerCase()]}T00:00:00`);
 };
 
 const genTimeBlock = (dayOW, hours = 0, minutes = 0) => {
@@ -70,19 +66,6 @@ const assignColor = (events) => {
     return acc;
   }, []);
 };
-
-//this function should be removed
-// const hashString = (s) => {
-//   /**
-//    * String -> Number
-//    */
-//   let h, i;
-//   for (i = 0, h = 0; i < s.length; i++) {
-//     // eslint-disable-next-line no-bitwise
-//     h = Math.imul(31, h) + s.charCodeAt(i) | 0;
-//   }
-//   return Math.abs(h);
-// };
 
 const pickColor = (num) => {
   const colorList = [

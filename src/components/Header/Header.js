@@ -34,48 +34,55 @@ const dayTextStyle = (nDays) => {
 };
 
 const Column = ({
-  column, nDays, format,
-}) => {
+                  column, nDays, format,
+                }) => {
   return (
-    <View style={styles.column}>
-      <Text style={[styles.text, dayTextStyle(nDays)]}>
-        {formatDate(column, format)}
-      </Text>
-    </View>
+      <View style={styles.column}>
+        <Text style={[styles.text, dayTextStyle(nDays)]}>
+          {formatDate(column, format)}
+        </Text>
+      </View>
   );
 };
 
 const DaysHeader = ({ columns, nDays, format }) => {
   return (
-    <View style={styles.columns}>
-      {columns.map((column) => {
-        return
-      })}
-    </View>
+      <View style={styles.columns}>
+        {columns.map((column) => {
+          return (
+              <Column
+                  key={column}
+                  column={column}
+                  nDays={nDays}
+                  format={format}
+              />
+          )
+        })}
+      </View>
   );
 };
 
 const Title = ({ nDays }) => {
   return (
-    <View style={styles.title}>
-      <Text
-        style={[styles.text, { fontSize: headerFontSize(nDays) }]}
-      >
+      <View style={styles.title}>
+        <Text
+            style={[styles.text, { fontSize: headerFontSize(nDays) }]}
+        >
 
-      </Text>
-    </View>
+        </Text>
+      </View>
   );
 };
 
 const WeekViewHeader = ({
-  nDays, selectedDate, dateFormat, style,
-}) => {
+                          nDays, selectedDate, dateFormat, style,
+                        }) => {
   const columns = datesFrom(nDays, selectedDate);
   return (
-    <View style={[styles.container, style]}>
-      <Title nDays={nDays} selectedDate={selectedDate} />
-      {columns && <Columns format={dateFormat} columns={columns} nDays={nDays} />}
-    </View>
+      <View style={[styles.container, style]}>
+        <Title nDays={nDays} selectedDate={selectedDate} />
+        {columns && <DaysHeader format={dateFormat} columns={columns} nDays={nDays} />}
+      </View>
   );
 };
 
