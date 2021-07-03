@@ -57,16 +57,16 @@ export default class TimeTableView extends Component {
     } = this.props;
     const events = assignColor(this.props.events);
     const { currentDate } = this.state;
-    // const dates = this.prepareDates(currentMoment, numberOfDays);
+    // const dates = this.prepareDates(currentMoment, nDays);
     const date = moment(currentDate);
     return (
       <View style={styles.container}>
         <View style={styles.header}>
           <Header
             style={headerStyle}
-            formatDate={dateHeaderFormat}
+            dateFormat={dateHeaderFormat}
             selectedDate={currentDate}
-            numberOfDays={nDays}
+            nDays={nDays}
           />
         </View>
         <ScrollView ref={this.props.scrollViewRef}>
@@ -87,7 +87,7 @@ export default class TimeTableView extends Component {
                 key={date}
                 times={this.times}
                 selectedDate={date.toDate()}
-                numberOfDays={nDays}
+                nDays={nDays}
                 onEventPress={onEventPress}
                 events={events}
               />

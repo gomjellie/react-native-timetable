@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {Dimensions, View} from 'react-native';
+import { Dimensions, View } from 'react-native';
 import moment from 'moment';
 
 import Event from '../Event/Event';
 
-import styles, {CONTENT_OFFSET, ROW_HEIGHT} from './Events.styles';
+import styles, { CONTENT_OFFSET, ROW_HEIGHT } from './Events.styles';
 import HeaderStyle from '../Header/Header.styles';
 
 const TIME_LABELS_COUNT = 24;
@@ -25,14 +25,14 @@ class Events extends Component {
     }
   };
 
-  getEventsByNumberOfDays = (numberOfDays, events, selectedDate) => {
-    // total stores events in each day of numberOfDays
+  getEventsBynDays = (nDays, events, selectedDate) => {
+    // total stores events in each day of nDays
     // example: [[event1, event2], [event3, event4], [event5]], each child array
     // is events for specific day in range
     const total = [];
     let initial = 0;
-    for (let i = initial; i < (numberOfDays + initial); i += 1) {
-      // current date in numberOfDays, calculated from selected date
+    for (let i = initial; i < (nDays + initial); i += 1) {
+      // current date in nDays, calculated from selected date
       const currenDate = moment(selectedDate).add(i, 'd');
 
       // filter events that have startTime/endTime in current date
@@ -109,8 +109,8 @@ class Events extends Component {
   };
 
   getEventItemWidth = () => {
-    const { numberOfDays } = this.props;
-    return EVENTS_CONTAINER_WIDTH / numberOfDays;
+    const { nDays } = this.props;
+    return EVENTS_CONTAINER_WIDTH / nDays;
   };
 
   sortEventByDates = (events) => {
@@ -124,12 +124,12 @@ class Events extends Component {
   render() {
     const {
       events,
-      numberOfDays,
+      nDays,
       selectedDate,
       times,
     } = this.props;
     const sortedEvents = this.sortEventByDates(events);
-    let totalEvents = this.getEventsByNumberOfDays(numberOfDays, sortedEvents, selectedDate);
+    let totalEvents = this.getEventsByNumberOfDays(nDays, sortedEvents, selectedDate);
     totalEvents = this.getEventsWithPosition(totalEvents);
     return (
       <View style={styles.container}>
@@ -161,7 +161,7 @@ class Events extends Component {
 }
 
 Events.propTypes = {
-  numberOfDays: PropTypes.oneOf([1, 3, 5, 6, 7]).isRequired,
+  nDays: PropTypes.oneOf([1, 3, 5, 6, 7]).isRequired,
   events: PropTypes.arrayOf(Event.propTypes.event),
   onEventPress: PropTypes.func,
   selectedDate: PropTypes.instanceOf(Date),
