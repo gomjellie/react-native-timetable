@@ -1,6 +1,6 @@
 import moment from 'moment/min/moment-with-locales.js';
 
-export const getFormattedDate = (date, format) => {
+export const formatDate = (date, format) => {
   return moment(date).format(format);
 };
 
@@ -8,19 +8,21 @@ export const setLocale = (locale) => {
   moment.locale(locale);
 };
 
-export const getCurrentMonth = (date) => {
-  return moment(date).format('MMMM Y');
-};
+//this function should be removed
+// export const getCurrentMonth = (date) => {
+//   return moment(date).format('MMMM Y');
+// };
 
-const genDayOfWeek = (DayOfWeekString) => {
+const genDateBlock = (dayOW) => {
   /*
     DayOfWeekString : SUN, MON, TUE, WED, THU, FRI, SAT
       type : string
    */
   if (typeof DayOfWeekString !== 'string') {
-    throw new Error(`genDayOfWeek got parameter type: ${typeof DayOfWeekString}, but string expected`);
+    throw new Error(`genDateBlock got parameter type: ${typeof dayOW}, but string expected`);
   }
-  const str2numberString = {
+
+  const dayOWMap = {
     'mon': '01',
     'tue': '02',
     'wed': '03',
@@ -36,11 +38,11 @@ const genDayOfWeek = (DayOfWeekString) => {
     '토': '06',
   };
 
-  return new Date(`2019-07-${str2numberString[DayOfWeekString.toLowerCase()]}T00:00:00`);
+  return new Date(`2019-07-${dayOWMap[DayOfWeekString.toLowerCase()]}T00:00:00`);
 };
 
-const genTimeBlock = (dayOfWeek, hours = 0, minutes = 0) => {
-  const date = genDayOfWeek(dayOfWeek);
+const genTimeBlock = (dayOW, hours = 0, minutes = 0) => {
+  const date = genDateBlock(dayOW);
   date.setHours(hours);
   if (minutes != null) {
     date.setMinutes(minutes);
@@ -48,7 +50,7 @@ const genTimeBlock = (dayOfWeek, hours = 0, minutes = 0) => {
   return date;
 };
 
-const addColor = (events) => {
+const assignColor = (events) => {
   // add color to item
   return events.reduce((acc, item, idx) => {
     const sameOne = acc.find((elem) => {
@@ -62,28 +64,28 @@ const addColor = (events) => {
     }, []).length;
     acc.push({
       ...item,
-      color: sameOne === undefined ? colorGenerator(count) : sameOne.color,
+      color: sameOne === undefined ? pickColor(count) : sameOne.color,
       id: idx,
     });
     return acc;
   }, []);
 };
 
+//this function should be removed
+// const hashString = (s) => {
+//   /**
+//    * String -> Number
+//    */
+//   let h, i;
+//   for (i = 0, h = 0; i < s.length; i++) {
+//     // eslint-disable-next-line no-bitwise
+//     h = Math.imul(31, h) + s.charCodeAt(i) | 0;
+//   }
+//   return Math.abs(h);
+// };
 
-const hashString = (s) => {
-  /**
-   * String -> Number
-   */
-  let h, i;
-  for (i = 0, h = 0; i < s.length; i++) {
-    // eslint-disable-next-line no-bitwise
-    h = Math.imul(31, h) + s.charCodeAt(i) | 0;
-  }
-  return Math.abs(h);
-};
-
-const colorGenerator = (num) => {
-  const color_list = [
+const pickColor = (num) => {
+  const colorList = [
     // apple calendar color
     'rgba(246,206,218,1)',
     'rgba(250,227,209,1)',
@@ -122,8 +124,8 @@ const colorGenerator = (num) => {
     'rgba(129,199,132,1)',
     'rgba(184,0,0,1)',
   ];
-  return color_list[num % color_list.length];
+  return colorList[num % colorList.length];
 };
 
-export {genDayOfWeek, genTimeBlock, colorGenerator, addColor};
+export { genDateBlock, genTimeBlock, pickColor, assignColor };
 

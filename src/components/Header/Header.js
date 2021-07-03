@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Text, View } from 'react-native';
 import moment from 'moment';
 
-import { getFormattedDate } from '../utils';
+import { formatDate } from '../utils';
 
 import styles from './Header.styles';
 
@@ -39,7 +39,7 @@ const Column = ({
   return (
     <View style={styles.column}>
       <Text style={[styles.text, getDayTextStyles(numberOfDays)]}>
-        {getFormattedDate(column, format)}
+        {formatDate(column, format)}
       </Text>
     </View>
   );
