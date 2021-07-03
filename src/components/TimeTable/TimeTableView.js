@@ -6,7 +6,7 @@ import {
   Text,
 } from 'react-native';
 import moment from 'moment';
-import { setLocale, addColor, genTimeBlock } from '../utils';
+import { setLocale, assignColor, genTimeBlock } from '../utils';
 import Events from '../Events/Events';
 import Header from '../Header/Header';
 import styles from './TimeTableView.styles';
@@ -15,12 +15,12 @@ export default class TimeTableView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentMoment: props.pivotDate,
+      currentDate: props.pivotDate,
     };
     const { pivotTime, pivotEndTime } = this.props;
     this.calendar = null;
     setLocale(props.locale);
-    this.times = this.generateTimes(pivotTime, pivotEndTime);
+    this.times = this.genTimes(pivotTime, pivotEndTime);
   }
 
   componentDidMount() {
@@ -32,14 +32,14 @@ export default class TimeTableView extends Component {
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.selectedDate) {
-      this.setState({ currentMoment: nextProps.selectedDate });
+      this.setState({ currentDate: nextProps.selectedDate });
     }
     if (nextProps.locale !== this.props.locale) {
       setLocale(nextProps.locale);
     }
   }
 
-  generateTimes = (pivotTime, endPivotTime) => {
+  genTimes = (pivotTime, endPivotTime) => {
     const times = [];
     for (let i = pivotTime; i < endPivotTime; i += 1) {
       times.push(i);
@@ -49,24 +49,24 @@ export default class TimeTableView extends Component {
 
   render() {
     const {
-      numberOfDays,
+      nDays,
       headerStyle,
-      formatDateHeader,
+      dateHeaderFormat,
       onEventPress,
       pivotTime,
     } = this.props;
-    const events = addColor(this.props.events);
-    const { currentMoment } = this.state;
-    // const dates = this.prepareDates(currentMoment, numberOfDays);
-    const date = moment(currentMoment);
+    const events = assignColor(this.props.events);
+    const { currentDate } = this.state;
+    // const dates = this.prepareDates(currentMoment, nDays);
+    const date = moment(currentDate);
     return (
       <View style={styles.container}>
         <View style={styles.header}>
           <Header
             style={headerStyle}
-            formatDate={formatDateHeader}
-            selectedDate={currentMoment}
-            numberOfDays={numberOfDays}
+            dateFormat={dateHeaderFormat}
+            selectedDate={currentDate}
+            nDays={nDays}
           />
         </View>
         <ScrollView ref={this.props.scrollViewRef}>
@@ -87,7 +87,7 @@ export default class TimeTableView extends Component {
                 key={date}
                 times={this.times}
                 selectedDate={date.toDate()}
-                numberOfDays={numberOfDays}
+                nDays={nDays}
                 onEventPress={onEventPress}
                 events={events}
               />
@@ -102,11 +102,11 @@ export default class TimeTableView extends Component {
 TimeTableView.propTypes = {
   scrollViewRef: PropTypes.func,
   events: Events.propTypes.events,
-  numberOfDays: PropTypes.oneOf([1, 3, 5, 6, 7]).isRequired,
+  nDays: PropTypes.oneOf([1, 3, 5, 6, 7]).isRequired,
   pivotTime: PropTypes.number,
   pivotEndTime: PropTypes.number,
   pivotDate: PropTypes.instanceOf(Date).isRequired,
-  formatDateHeader: PropTypes.string,
+  dateHeaderFormat: PropTypes.string,
   onEventPress: PropTypes.func,
   headerStyle: PropTypes.object,
   locale: PropTypes.string,
@@ -118,5 +118,5 @@ TimeTableView.defaultProps = {
   pivotTime: 8,
   pivotEndTime: 22,
   pivotDate: genTimeBlock('mon'),
-  formatDateHeader: "dddd",
+  dateHeaderFormat: "dddd",
 };

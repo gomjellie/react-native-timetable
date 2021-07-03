@@ -26,7 +26,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <SafeAreaView style={{flex: 1}}>
+      <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.container}>
           <TimeTableView
             scrollViewRef={this.scrollViewRef}
@@ -34,7 +34,7 @@ export default class App extends Component {
             pivotTime={9}
             pivotEndTime={20}
             pivotDate={this.pivotDate}
-            numberOfDays={this.numOfDays}
+            nDays={this.numOfDays}
             onEventPress={this.onEventPress}
             headerStyle={styles.headerStyle}
             formatDateHeader="dddd"

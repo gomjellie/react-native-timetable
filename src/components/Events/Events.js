@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {Dimensions, View} from 'react-native';
+import { Dimensions, View } from 'react-native';
 import moment from 'moment';
 
 import Event from '../Event/Event';
 
-import styles, {CONTENT_OFFSET, ROW_HEIGHT} from './Events.styles';
+import styles, { CONTENT_OFFSET, ROW_HEIGHT } from './Events.styles';
 import HeaderStyle from '../Header/Header.styles';
 
 const TIME_LABELS_COUNT = 24;
@@ -25,14 +25,14 @@ class Events extends Component {
     }
   };
 
-  getEventsByNumberOfDays = (numberOfDays, events, selectedDate) => {
-    // total stores events in each day of numberOfDays
+  catEventsByDays = (nDays, events, selectedDate) => {
+    // total stores events in each day of nDays
     // example: [[event1, event2], [event3, event4], [event5]], each child array
     // is events for specific day in range
     const total = [];
     let initial = 0;
-    for (let i = initial; i < (numberOfDays + initial); i += 1) {
-      // current date in numberOfDays, calculated from selected date
+    for (let i = initial; i < (nDays + initial); i += 1) {
+      // current date in nDays, calculated from selected date
       const currenDate = moment(selectedDate).add(i, 'd');
 
       // filter events that have startTime/endTime in current date
@@ -56,7 +56,7 @@ class Events extends Component {
     return total;
   };
 
-  getStyleForEvent = (item) => {
+  calcEventStyle = (item) => {
     /**
      * TODO: gotta reduce topOffset value in order to pull events upper (it should be go together with left time label)
      * @type {number}
@@ -77,13 +77,13 @@ class Events extends Component {
     };
   };
 
-  getEventsWithPosition = (totalEvents) => {
+  adjustEventStyle = (totalEvents) => {
     const itemWidth = this.getEventItemWidth();
     return totalEvents.map((events) => {
       // get position and width for each event
       return events.reduce((eventsAcc, event, i) => {
         let numberOfDuplicate = 1;
-        const style = this.getStyleForEvent(event);
+        const style = this.calcEventStyle(event);
         // check if previous events have the same position or not,
         // start from 0 to current index of event item
         for (let j = 0; j < i; j += 1) {
@@ -109,11 +109,11 @@ class Events extends Component {
   };
 
   getEventItemWidth = () => {
-    const { numberOfDays } = this.props;
-    return EVENTS_CONTAINER_WIDTH / numberOfDays;
+    const { nDays } = this.props;
+    return EVENTS_CONTAINER_WIDTH / nDays;
   };
 
-  sortEventByDates = (events) => {
+  sortEventsByDate = (events) => {
     return events.slice(0)
       .sort((a, b) => {
         return moment(a.startTime)
@@ -124,13 +124,13 @@ class Events extends Component {
   render() {
     const {
       events,
-      numberOfDays,
+      nDays,
       selectedDate,
       times,
     } = this.props;
-    const sortedEvents = this.sortEventByDates(events);
-    let totalEvents = this.getEventsByNumberOfDays(numberOfDays, sortedEvents, selectedDate);
-    totalEvents = this.getEventsWithPosition(totalEvents);
+    const sortedEvents = this.sortEventsByDate(events);
+    let totalEvents = this.catEventsByDays(nDays, sortedEvents, selectedDate);
+    totalEvents = this.adjustEventStyle(totalEvents);
     return (
       <View style={styles.container}>
         {times.map(time => (
@@ -161,7 +161,7 @@ class Events extends Component {
 }
 
 Events.propTypes = {
-  numberOfDays: PropTypes.oneOf([1, 3, 5, 6, 7]).isRequired,
+  nDays: PropTypes.oneOf([1, 3, 5, 6, 7]).isRequired,
   events: PropTypes.arrayOf(Event.propTypes.event),
   onEventPress: PropTypes.func,
   selectedDate: PropTypes.instanceOf(Date),
