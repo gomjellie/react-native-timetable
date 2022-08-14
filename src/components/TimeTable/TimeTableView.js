@@ -70,7 +70,7 @@ export default class TimeTableView extends Component {
                 key={date}
                 times={this.times}
                 selectedDate={date.toDate()}
-                nDays={nDays}
+                numDays={nDays}
                 onEventPress={onEventPress}
                 events={events}
               />

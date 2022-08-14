@@ -10,7 +10,7 @@ import styles from './Header.styles';
 const datesFrom = (nDays, selectedDate) => {
   const columns = [];
   let initial = 0;
-  for (let i = initial; i < (nDays + initial); i += 1) {
+  for (let i = initial; i < nDays + initial; i += 1) {
     let date = moment(selectedDate);
     date = date.add(i, 'd');
     columns.push(date.toDate());
@@ -33,56 +33,45 @@ const dayTextStyle = (nDays) => {
   };
 };
 
-const Column = ({
-                  column, nDays, format,
-                }) => {
+const Column = ({ column, nDays, format }) => {
   return (
-      <View style={styles.column}>
-        <Text style={[styles.text, dayTextStyle(nDays)]}>
-          {formatDate(column, format)}
-        </Text>
-      </View>
+    <View style={styles.column}>
+      <Text style={[styles.text, dayTextStyle(nDays)]}>
+        {formatDate(column, format)}
+      </Text>
+    </View>
   );
 };
 
 const DaysHeader = ({ columns, nDays, format }) => {
   return (
-      <View style={styles.columns}>
-        {columns.map((column) => {
-          return (
-              <Column
-                  key={column}
-                  column={column}
-                  nDays={nDays}
-                  format={format}
-              />
-          )
-        })}
-      </View>
+    <View style={styles.columns}>
+      {columns.map((column) => {
+        return (
+          <Column key={column} column={column} nDays={nDays} format={format} />
+        );
+      })}
+    </View>
   );
 };
 
 const Title = ({ nDays }) => {
   return (
-      <View style={styles.title}>
-        <Text
-            style={[styles.text, { fontSize: headerFontSize(nDays) }]}
-        >
-
-        </Text>
-      </View>
+    <View style={styles.title}>
+      <Text style={[styles.text, { fontSize: headerFontSize(nDays) }]}></Text>
+    </View>
   );
 };
 
-const WeekViewHeader = ({
-                          nDays, selectedDate, dateFormat, style,
-                        }) => {
+const WeekViewHeader = ({ nDays, selectedDate, dateFormat, style }) => {
   const columns = datesFrom(nDays, selectedDate);
   return (
-      <View style={[styles.container, style]}>
-        <Title nDays={nDays} selectedDate={selectedDate} />
-        {columns && <DaysHeader format={dateFormat} columns={columns} nDays={nDays} />}
-      </View>
+    <View style={[styles.container, style]}>
+      <Title nDays={nDays} selectedDate={selectedDate} />
+      {columns && (
+        <DaysHeader format={dateFormat} columns={columns} nDays={nDays} />
+      )}
+    </View>
   );
 };
 

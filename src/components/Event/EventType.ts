@@ -1,12 +1,20 @@
-export type CalendarEvent = {
+import { StyleProp, ViewStyle } from 'react-native';
+
+export type InternalCalendarEvent = {
   title: string;
+  extra_descriptions: string[];
   startTime: Date;
   endTime: Date;
   location: string;
-  extra_descriptions: string[];
   id: string | number;
   color: string;
+  style: ViewStyle;
 };
+
+export type CalendarEvent = Pick<
+  InternalCalendarEvent,
+  'startTime' | 'endTime' | 'title' | 'extra_descriptions' | 'location'
+>;
 
 // color: PropTypes.string,
 //   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
