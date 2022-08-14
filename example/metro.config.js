@@ -5,6 +5,8 @@
  * @format
  */
 
+const packagePath = '/Users/user/Developer/react-native-timetable/src';
+
 module.exports = {
   transformer: {
     getTransformOptions: async () => ({
@@ -14,4 +16,8 @@ module.exports = {
       },
     }),
   },
+  resolver: {
+    nodeModulesPaths: [packagePath],
+  },
+  watchFolders: [packagePath],
 };
