@@ -31,13 +31,16 @@ class Events extends Component {
     // is events for specific day in range
     const total = [];
     let initial = 0;
-    for (let i = initial; i < (nDays + initial); i += 1) {
+    for (let i = initial; i < nDays + initial; i += 1) {
       // current date in nDays, calculated from selected date
       const currenDate = moment(selectedDate).add(i, 'd');
 
       // filter events that have startTime/endTime in current date
       let filteredEvents = events.filter((item) => {
-        return currenDate.isSame(item.startTime, 'day') || currenDate.isSame(item.endTime, 'day');
+        return (
+          currenDate.isSame(item.startTime, 'day') ||
+          currenDate.isSame(item.endTime, 'day')
+        );
       });
 
       filteredEvents = filteredEvents.map((item) => {
@@ -64,9 +67,11 @@ class Events extends Component {
     const { pivotTime } = this.props;
     const startHours = moment(item.startTime).hours() - pivotTime;
     const startMinutes = moment(item.startTime).minutes();
-    const totalStartMinutes = (startHours * MINUTES_IN_HOUR) + startMinutes;
+    const totalStartMinutes = startHours * MINUTES_IN_HOUR + startMinutes;
     const topOffset = (totalStartMinutes * CONTENT_HEIGHT) / MINUTES_IN_DAY;
-    const height = (moment(item.endTime).diff(item.startTime, 'minutes') * CONTENT_HEIGHT) / MINUTES_IN_DAY;
+    const height =
+      (moment(item.endTime).diff(item.startTime, 'minutes') * CONTENT_HEIGHT) /
+      MINUTES_IN_DAY;
     const width = this.getEventItemWidth();
 
     return {
@@ -90,11 +95,12 @@ class Events extends Component {
           const previousEvent = eventsAcc[j];
           // if left and top of previous event collides with current item,
           // move current item to the right and update new width for both
-          const foundDuplicate = previousEvent.style.left === style.left
-            && previousEvent.style.top + previousEvent.style.height > style.top;
+          const foundDuplicate =
+            previousEvent.style.left === style.left &&
+            previousEvent.style.top + previousEvent.style.height > style.top;
           if (foundDuplicate) {
             numberOfDuplicate += 1;
-            style.left = 5 + (itemWidth / numberOfDuplicate);
+            style.left = 5 + itemWidth / numberOfDuplicate;
             style.width = itemWidth / numberOfDuplicate;
             previousEvent.style.width = itemWidth / numberOfDuplicate;
           }
@@ -114,37 +120,27 @@ class Events extends Component {
   };
 
   sortEventsByDate = (events) => {
-    return events.slice(0)
-      .sort((a, b) => {
-        return moment(a.startTime)
-          .diff(b.startTime, 'minutes');
-      });
+    return events.slice(0).sort((a, b) => {
+      return moment(a.startTime).diff(b.startTime, 'minutes');
+    });
   };
 
   render() {
-    const {
-      events,
-      nDays,
-      selectedDate,
-      times,
-    } = this.props;
+    const { events, nDays, selectedDate, times } = this.props;
     const sortedEvents = this.sortEventsByDate(events);
     let totalEvents = this.catEventsByDays(nDays, sortedEvents, selectedDate);
     totalEvents = this.adjustEventStyle(totalEvents);
     return (
       <View style={styles.container}>
-        {times.map(time => (
+        {times.map((time) => (
           <View key={time} style={styles.timeRow}>
             <View style={styles.timeLabelLine} />
           </View>
         ))}
         <View style={styles.events}>
           {totalEvents.map((eventsInSection, sectionIndex) => (
-            <View
-              key={sectionIndex}
-              style={styles.event}
-            >
-              {eventsInSection.map(item => (
+            <View key={sectionIndex} style={styles.event}>
+              {eventsInSection.map((item) => (
                 <Event
                   key={item.data.id}
                   event={item.data}
@@ -160,19 +156,19 @@ class Events extends Component {
   }
 }
 
-Events.propTypes = {
-  nDays: PropTypes.oneOf([1, 3, 5, 6, 7]).isRequired,
-  events: PropTypes.arrayOf(Event.propTypes.event),
-  onEventPress: PropTypes.func,
-  selectedDate: PropTypes.instanceOf(Date),
-  times: PropTypes.arrayOf(PropTypes.number),
-  pivotTime: PropTypes.number,
-};
+// Events.propTypes = {
+//   nDays: PropTypes.oneOf([1, 3, 5, 6, 7]).isRequired,
+//   events: PropTypes.arrayOf(Event.propTypes.event),
+//   onEventPress: PropTypes.func,
+//   selectedDate: PropTypes.instanceOf(Date),
+//   times: PropTypes.arrayOf(PropTypes.number),
+//   pivotTime: PropTypes.number,
+// };
 
-Events.defaultProps = {
-  events: [],
-  pivotTime: 8,
-  selectedDate: new Date(),
-};
+// Events.defaultProps = {
+//   events: [],
+//   pivotTime: 8,
+//   selectedDate: new Date(),
+// };
 
 export default Events;

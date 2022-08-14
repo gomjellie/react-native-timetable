@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {
-  View,
-  ScrollView,
-  Text,
-} from 'react-native';
+import { View, ScrollView, Text } from 'react-native';
 import moment from 'moment';
 import { setLocale, assignColor, genTimeBlock } from '../utils';
 import Events from '../Events/Events';
@@ -41,13 +37,8 @@ export default class TimeTableView extends Component {
   };
 
   render() {
-    const {
-      nDays,
-      headerStyle,
-      dateHeaderFormat,
-      onEventPress,
-      pivotTime,
-    } = this.props;
+    const { nDays, headerStyle, dateHeaderFormat, onEventPress, pivotTime } =
+      this.props;
     const events = assignColor(this.props.events);
     const { currentDate } = this.state;
     // const dates = this.prepareDates(currentMoment, nDays);
@@ -65,16 +56,15 @@ export default class TimeTableView extends Component {
         <ScrollView ref={this.props.scrollViewRef}>
           <View style={styles.scrollViewContent}>
             <View style={styles.timeColumn}>
-              {this.times.map(time => (
+              {this.times.map((time) => (
                 <View key={time} style={styles.timeLabel}>
-                  <Text style={styles.timeText}>{time === 12 ? 12 : time % 12}</Text>
+                  <Text style={styles.timeText}>
+                    {time === 12 ? 12 : time % 12}
+                  </Text>
                 </View>
               ))}
             </View>
-            <View
-              key={date}
-              style={styles.eventsContainer}
-            >
+            <View key={date} style={styles.eventsContainer}>
               <Events
                 pivotTime={pivotTime}
                 key={date}
@@ -92,24 +82,24 @@ export default class TimeTableView extends Component {
   }
 }
 
-TimeTableView.propTypes = {
-  scrollViewRef: PropTypes.func,
-  events: Events.propTypes.events,
-  nDays: PropTypes.oneOf([1, 3, 5, 6, 7]).isRequired,
-  pivotTime: PropTypes.number,
-  pivotEndTime: PropTypes.number,
-  pivotDate: PropTypes.instanceOf(Date).isRequired,
-  dateHeaderFormat: PropTypes.string,
-  onEventPress: PropTypes.func,
-  headerStyle: PropTypes.object,
-  locale: PropTypes.string,
-};
+// TimeTableView.propTypes = {
+//   scrollViewRef: PropTypes.func,
+//   events: Events.propTypes.events,
+//   nDays: PropTypes.oneOf([1, 3, 5, 6, 7]).isRequired,
+//   pivotTime: PropTypes.number,
+//   pivotEndTime: PropTypes.number,
+//   pivotDate: PropTypes.instanceOf(Date).isRequired,
+//   dateHeaderFormat: PropTypes.string,
+//   onEventPress: PropTypes.func,
+//   headerStyle: PropTypes.object,
+//   locale: PropTypes.string,
+// };
 
-TimeTableView.defaultProps = {
-  events: [],
-  locale: 'en',
-  pivotTime: 8,
-  pivotEndTime: 22,
-  pivotDate: genTimeBlock('mon'),
-  dateHeaderFormat: "dddd",
-};
+// TimeTableView.defaultProps = {
+//   events: [],
+//   locale: 'en',
+//   pivotTime: 8,
+//   pivotEndTime: 22,
+//   pivotDate: genTimeBlock('mon'),
+//   dateHeaderFormat: "dddd",
+// };

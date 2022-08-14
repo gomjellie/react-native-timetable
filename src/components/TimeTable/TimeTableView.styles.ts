@@ -1,4 +1,4 @@
-import {Dimensions, StyleSheet} from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 
 import { ROW_HEIGHT } from '../Events/Events.styles';
 import HeaderStyle from '../Header/Header.styles';
@@ -30,7 +30,8 @@ const styles = StyleSheet.create({
     width: HeaderStyle.title.width,
   },
   eventsContainer: {
-    flex: 1, width: SCREEN_WIDTH - HeaderStyle.title.width,
+    flex: 1,
+    width: SCREEN_WIDTH - HeaderStyle.title.width,
   },
 });
 
