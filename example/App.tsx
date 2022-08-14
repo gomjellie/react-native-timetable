@@ -13,7 +13,7 @@ import FIXTURE_EVENTS from './__fixtures__/events.fixture';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
-  const pivotDate = useMemo(() => genTimeBlock('mon'), []);
+  const pivotDate = useMemo(() => genTimeBlock('MON'), []);
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,

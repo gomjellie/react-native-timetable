@@ -1,43 +1,43 @@
-import moment from 'moment/min/moment-with-locales.js';
+import moment from 'moment';
 
-export const formatDate = (date, format) => {
+export const formatDate = (
+  date: moment.MomentInput | undefined,
+  format: string | undefined
+) => {
   return moment(date).format(format);
 };
 
-export const setLocale = (locale) => {
+export const setLocale = (locale: string | undefined) => {
   moment.locale(locale);
 };
 
+// type DayOfWeek = 'mon' | 'tue' | 'wed' | 'thu' | 'fri' | 'sat' | 'sun';
+type DayOfWeek = 'MON' | 'TUE' | 'WED' | 'THU' | 'FRI' | 'SAT' | 'SUN';
+
 /**
- * @param {String} dayOW
  * @example genDateBlock("mon")
- * @returns {Date}
  */
-const genDateBlock = (dayOW) => {
+const genDateBlock = (dayOW: DayOfWeek) => {
   if (typeof dayOW !== 'string') {
-    throw new Error(`genDateBlock got parameter type: ${typeof dayOW}, but string expected`);
+    throw new Error(
+      `genDateBlock got parameter type: ${typeof dayOW}, but string expected`
+    );
   }
 
   const dayOWMap = {
-    'mon': '01',
-    'tue': '02',
-    'wed': '03',
-    'thu': '04',
-    'fri': '05',
-    'sat': '06',
-    'sun': '07',
-    '월': '01',
-    '화': '02',
-    '수': '03',
-    '목': '04',
-    '금': '05',
-    '토': '06',
-  };
+    MON: '01',
+    TUE: '02',
+    WED: '03',
+    THU: '04',
+    FRI: '05',
+    SAT: '06',
+    SUN: '07',
+  } as const;
 
-  return new Date(`2019-07-${dayOWMap[dayOW.toLowerCase()]}T00:00:00`);
+  return new Date(`2019-07-${dayOWMap[dayOW]}T00:00:00`);
 };
 
-const genTimeBlock = (dayOW, hours = 0, minutes = 0) => {
+const genTimeBlock = (dayOW: DayOfWeek, hours = 0, minutes = 0) => {
   const date = genDateBlock(dayOW);
   date.setHours(hours);
   if (minutes != null) {
@@ -46,13 +46,13 @@ const genTimeBlock = (dayOW, hours = 0, minutes = 0) => {
   return date;
 };
 
-const assignColor = (events) => {
+const assignColor = (events: any[]) => {
   // add color to item
-  return events.reduce((acc, item, idx) => {
-    const sameOne = acc.find((elem) => {
+  return events.reduce((acc: any[], item: { title: any }, idx: any) => {
+    const sameOne = acc.find((elem: { title: any }) => {
       return elem.title === item.title;
     });
-    const count = acc.reduce((acc, item) => {
+    const count = acc.reduce((acc: any[], item: { title: any }) => {
       if (acc[acc.length - 1] !== item.title) {
         acc.push(item.title);
       }
@@ -67,7 +67,7 @@ const assignColor = (events) => {
   }, []);
 };
 
-const pickColor = (num) => {
+const pickColor = (num: number) => {
   const colorList = [
     // apple calendar color
     'rgba(246,206,218,1)',
@@ -111,4 +111,3 @@ const pickColor = (num) => {
 };
 
 export { genDateBlock, genTimeBlock, pickColor, assignColor };
-
