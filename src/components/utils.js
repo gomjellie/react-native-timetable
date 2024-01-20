@@ -60,7 +60,7 @@ const assignColor = (events) => {
     }, []).length;
     acc.push({
       ...item,
-      color: sameOne === undefined ? pickColor(count) : sameOne.color,
+      color: item.color ? item.color : sameOne === undefined ? pickColor(count) : sameOne.color,
       id: idx,
     });
     return acc;

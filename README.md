@@ -175,6 +175,7 @@ Type: Object
  - startTime: Date (result of [`genTimeBlock`](#genTimeBlock))
  - endTime: Date (result of [`genTimeBlock`](#genTimeBlock))
  - location: String
+ - color: String
  - extra_descriptions: Array Of String
 
 e.g.)
@@ -185,6 +186,7 @@ e.g.)
     startTime: Date, // I surely recommend to make Date using genTimeBlock function
     endTime: Date,
     location: String,
+    color: String
     extra_descriptions: Array Of String,
 }
 ```
